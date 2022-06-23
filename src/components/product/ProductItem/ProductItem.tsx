@@ -5,12 +5,29 @@ import Link from '@/components/ui/Link';
 import Image from '@/components/ui/Image';
 import Button from '@/components/ui/Button';
 import { Product } from '@/lib/data';
+import useCart from '@/hooks/useCart';
 
 type ProductItemProps = {
   product: Product;
 };
 
 const ProductItem: FC<ProductItemProps> = ({ product }) => {
+  const { addItem } = useCart();
+
+  const handleAddToCart = () => {
+    if (product.stock === 0) {
+      return;
+    }
+
+    addItem({
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      image: product.image,
+      totalPrice: product.price,
+    });
+  };
+
   return (
     <Card>
       <Link href={`/shop/${product.slug}`}>
@@ -26,7 +43,9 @@ const ProductItem: FC<ProductItemProps> = ({ product }) => {
         </Link>
         <p className="mb-2">{product.brand}</p>
         <p>${product.price}</p>
-        <Button type="button">Add to cart</Button>
+        <Button type="button" className="w-full" onClick={handleAddToCart}>
+          Add to cart
+        </Button>
       </div>
     </Card>
   );

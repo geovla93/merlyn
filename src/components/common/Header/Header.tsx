@@ -8,9 +8,11 @@ import Logo from '../Logo';
 import Link from '@/components/ui/Link';
 import Image from '@/components/ui/Image';
 import { navigation } from '@/lib/constants';
+import useCart from '@/hooks/useCart';
 
 const Header: FC = () => {
   const [open, setOpen] = useState(false);
+  const { totalItems } = useCart();
 
   return (
     <div className="bg-white border-b border-gray-200">
@@ -192,7 +194,7 @@ const Header: FC = () => {
                     aria-hidden="true"
                   />
                   <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                    0
+                    {totalItems}
                   </span>
                   <span className="sr-only">items in cart, view bag</span>
                 </Link>
