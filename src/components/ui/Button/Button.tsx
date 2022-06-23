@@ -23,9 +23,9 @@ const Button: FC<ButtonProps> = ({
     <button
       {...props}
       className={cn(
-        'rounded border border-secondary px-4 py-1.5 outline-none transition-colors duration-200 ease-in-out disabled:cursor-not-allowed',
+        'rounded border shadow border-amber-300 px-4 py-2 outline-none transition-colors duration-200 ease-in-out disabled:cursor-not-allowed',
         {
-          'bg-secondary  text-light hover:border-opacity-80 hover:bg-opacity-80':
+          'bg-amber-300 hover:border-amber-400 hover:bg-amber-400':
             variant === 'contained',
           'text-secondary hover:bg-secondary hover:text-light':
             variant === 'outlined',
