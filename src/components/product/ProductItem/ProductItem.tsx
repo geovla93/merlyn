@@ -22,6 +22,7 @@ const ProductItem: FC<ProductItemProps> = ({ product }) => {
     addItem({
       name: product.name,
       price: product.price,
+      slug: product.slug,
       quantity: 1,
       image: product.image,
       totalPrice: product.price,

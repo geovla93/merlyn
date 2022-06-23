@@ -69,9 +69,37 @@ const useCart = () => {
     [cartItems, setCartItems],
   );
 
+  const clearItemFromCart = useCallback(
+    (itemName: string) => {
+      const currentCartItems = [...cartItems];
+      const existingItemIndex = cartItems.findIndex((i) => i.name === itemName);
+      const newCartItems = removeItemAtIndex(
+        currentCartItems,
+        existingItemIndex,
+      );
+
+      setCartItems(newCartItems);
+    },
+    [cartItems, setCartItems],
+  );
+
   const values = useMemo(
-    () => ({ cartItems, totalAmount, totalItems, addItem, removeItem }),
-    [addItem, cartItems, removeItem, totalAmount, totalItems],
+    () => ({
+      cartItems,
+      totalAmount,
+      totalItems,
+      addItem,
+      removeItem,
+      clearItemFromCart,
+    }),
+    [
+      addItem,
+      cartItems,
+      removeItem,
+      totalAmount,
+      totalItems,
+      clearItemFromCart,
+    ],
   );
 
   return { ...values };
