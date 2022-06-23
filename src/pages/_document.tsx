@@ -4,7 +4,7 @@ function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body>
+      <body className="w-screen min-h-screen">
         <Main />
         <NextScript />
       </body>
